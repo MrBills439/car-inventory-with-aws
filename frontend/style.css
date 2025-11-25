@@ -21,7 +21,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #f8fafc;
+  background: linear-gradient(rgba(148, 150, 152, 0.65), rgba(148, 150, 152, 0.78)),
+    url("assets/cars/road.jpg") center/cover fixed no-repeat;
   color: #0f172a;
 }
 
@@ -109,6 +110,11 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+.hero .btn.ghost {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
 }
 
 .hero-grid {
