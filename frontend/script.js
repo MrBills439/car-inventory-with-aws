@@ -1,5 +1,5 @@
 // Base API URL – update to match your deployed API Gateway invoke URL.
-const API_BASE_URL = "https://your-api-id.execute-api.region.amazonaws.com/prod";
+const API_BASE_URL = "https://e0t7dcfjd8.execute-api.us-west-1.amazonaws.com";
 
 // Cache shared DOM nodes for loaders and toasts.
 const toastContainer = document.getElementById("toastContainer");
