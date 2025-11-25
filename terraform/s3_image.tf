@@ -24,9 +24,9 @@ resource "aws_s3_bucket_policy" "car_images_policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action   = ["s3:GetObject"]
-        Effect   = "Allow"
-        Resource = "${aws_s3_bucket.car_images.arn}/*"
+        Action    = ["s3:GetObject"]
+        Effect    = "Allow"
+        Resource  = "${aws_s3_bucket.car_images.arn}/*"
         Principal = "*"
       }
     ]
