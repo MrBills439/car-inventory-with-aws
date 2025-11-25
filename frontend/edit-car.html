@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Car</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="edit">
+    <header class="app-header">
+      <div>
+        <h1>Edit Car</h1>
+        <p>Update the information for this car.</p>
+      </div>
+      <a class="btn ghost" href="index.html">Back to all cars</a>
+    </header>
+
+    <main>
+      <form id="editCarForm" class="card form-card">
+        <div class="form-grid">
+          <label>
+            Brand
+            <input type="text" name="brand" required />
+          </label>
+          <label>
+            Model
+            <input type="text" name="model" required />
+          </label>
+          <label>
+            Year
+            <input type="number" name="year" min="1900" max="2100" required />
+          </label>
+          <label>
+            Price (USD)
+            <input type="number" name="price" min="0" step="0.01" required />
+          </label>
+          <label>
+            Mileage (mi)
+            <input type="number" name="mileage" min="0" step="1" required />
+          </label>
+          <label class="full">
+            Description
+            <textarea name="description" rows="3" required></textarea>
+          </label>
+          <label class="full">
+            Replace Image (optional)
+            <input type="file" name="image" id="editImageInput" accept="image/*" />
+          </label>
+          <div class="image-preview full" id="editImagePreview">
+            <img id="currentImage" src="" alt="Current car image" />
+          </div>
+        </div>
+        <button type="submit" class="btn primary">Save Changes</button>
+      </form>
+    </main>
+
+    <div id="toastContainer" class="toast-container" aria-live="assertive"></div>
+    <div id="globalLoader" class="loader hidden">
+      <div class="spinner"></div>
+      <p>Updating...</p>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+

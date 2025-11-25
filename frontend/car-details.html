@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Details</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="details">
+    <header class="app-header">
+      <div>
+        <h1>Car Details</h1>
+        <p>Full information about the selected car.</p>
+      </div>
+      <a class="btn ghost" href="index.html">Back to all cars</a>
+    </header>
+
+    <main>
+      <section id="carDetails" class="card details-card">
+        <div class="details-image">
+          <img id="detailsImage" src="" alt="Car image" />
+        </div>
+        <div class="details-body">
+          <h2 id="detailsTitle"></h2>
+          <p id="detailsDescription"></p>
+
+          <dl class="details-list">
+            <div>
+              <dt>Brand</dt>
+              <dd id="detailsBrand"></dd>
+            </div>
+            <div>
+              <dt>Model</dt>
+              <dd id="detailsModel"></dd>
+            </div>
+            <div>
+              <dt>Year</dt>
+              <dd id="detailsYear"></dd>
+            </div>
+            <div>
+              <dt>Price</dt>
+              <dd id="detailsPrice"></dd>
+            </div>
+            <div>
+              <dt>Mileage</dt>
+              <dd id="detailsMileage"></dd>
+            </div>
+          </dl>
+
+          <div class="details-actions">
+            <button class="btn secondary" id="editCarBtn">Edit Car</button>
+            <button class="btn danger" id="deleteCarBtn">Delete Car</button>
+            <a class="btn ghost" href="index.html">Back to all cars</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toastContainer" class="toast-container" aria-live="assertive"></div>
+    <div id="globalLoader" class="loader hidden">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Inventory</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="list">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="hero-copy">
+          <p class="eyebrow">AWS Powered Fleet Intelligence</p>
+          <h1>Run a premium car inventory experience.</h1>
+          <p class="subtitle">
+            Track every vehicle, surface insights instantly, and onboard new cars
+            with secure AWS automation. Built for dealerships and growing fleets.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="add-car.html">Add New Car</a>
+            <button class="btn ghost" id="scrollToInventory">View Inventory</button>
+          </div>
+        </div>
+        <figure class="hero-visual">
+          <img src="assets/cars/hero.svg" alt="Stylized car illustration" />
+        </figure>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-card stats">
+          <h3>2,500+</h3>
+          <p>Cars trusted on this platform.</p>
+          <span>Realtime sync with DynamoDB</span>
+        </div>
+        <div class="hero-card image">
+          <img src="assets/cars/luxury.svg" alt="Luxury sedan illustration" />
+        </div>
+        <div class="hero-card image">
+          <img src="assets/cars/sports.svg" alt="Sports car illustration" />
+        </div>
+        <div class="hero-card stats">
+          <h3>99.9%</h3>
+          <p>API uptime backed by API Gateway.</p>
+          <span>Global CDN edge delivery</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="card showcase">
+        <div>
+          <p class="eyebrow">Featured Collections</p>
+          <h2>Handpicked inventory imagery</h2>
+          <p>
+            Set expectations with curated visuals for sedans, SUVs, and exotic builds.
+            Replace these stock highlights any time with your own uploads.
+          </p>
+        </div>
+        <div class="showcase-grid">
+          <figure>
+            <img
+              src="assets/cars/luxury.svg"
+              alt="Executive sedan"
+            />
+            <figcaption>Executive Sedans</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="assets/cars/suv.svg"
+              alt="SUV adventure"
+            />
+            <figcaption>Adventure SUVs</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="assets/cars/sports.svg"
+              alt="Sports car"
+            />
+            <figcaption>Track-Ready Performance</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="card" id="inventorySection">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Live Fleet</p>
+            <h2>Available Cars</h2>
+          </div>
+          <button class="btn ghost" id="refreshCars">Refresh</button>
+        </div>
+        <div id="carGrid" class="car-grid" aria-live="polite"></div>
+        <p id="emptyState" class="empty-state hidden">
+          No cars available yet. Click “Add New Car” to get started.
+        </p>
+      </section>
+    </main>
+
+    <div id="toastContainer" class="toast-container" aria-live="assertive"></div>
+    <div id="globalLoader" class="loader hidden">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+

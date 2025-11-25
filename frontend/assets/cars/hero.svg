@@ -1,0 +1,25 @@
+<svg width="640" height="360" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paint0" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="paint1" x1="160" y1="180" x2="520" y2="310" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2E8F0"/>
+      <stop offset="1" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="32" fill="url(#paint0)"/>
+  <circle cx="520" cy="80" r="40" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="80" cy="40" r="25" fill="rgba(255,255,255,0.15)"/>
+  <path d="M120 240C160 170 210 150 360 150C490 150 540 130 580 210L600 250C610 270 600 290 580 292L520 296C520 273 502 255 479 255C456 255 438 273 438 296H254C254 272 236 255 213 255C190 255 172 272 172 296H120C100 296 95 268 107 252L120 240Z" fill="url(#paint1)"/>
+  <circle cx="213" cy="296" r="36" fill="#0F172A"/>
+  <circle cx="213" cy="296" r="20" fill="#CBD5F5"/>
+  <circle cx="479" cy="296" r="36" fill="#0F172A"/>
+  <circle cx="479" cy="296" r="20" fill="#CBD5F5"/>
+  <path d="M320 196H520" stroke="#1E293B" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  <path d="M150 210H260" stroke="#1E293B" stroke-width="6" stroke-linecap="round" opacity="0.4"/>
+  <text x="60" y="90" fill="#FFFFFF" font-size="26" font-family="Inter, sans-serif" font-weight="600">Car Inventory Studio</text>
+  <text x="60" y="120" fill="#BFDBFE" font-size="16" font-family="Inter, sans-serif">Powered by AWS API Gateway · Lambda · DynamoDB</text>
+</svg>
+
