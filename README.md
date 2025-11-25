@@ -1,6 +1,6 @@
 # Car Inventory System – Serverless AWS Architecture
 
-![Architecture Diagram](A_network_architecture_diagram_in_the_digital_illu.png)
+![Architecture Diagram](/media/diagram.png)
 
 ## 📌 Overview
 
