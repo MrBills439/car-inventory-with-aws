@@ -3,25 +3,29 @@ import json
 import boto3
 import uuid
 
-s3_client = boto3.client("s3")
+s3 = boto3.client("s3")
 BUCKET = os.environ["BUCKET"]
 
 def lambda_handler(event, context):
     try:
+        # Parse request
         body = json.loads(event.get("body") or "{}")
 
-        original_name = body.get("filename")
-        content_type = body.get("contentType", "application/octet-stream")
+        filename = body.get("filename")
+        content_type = body.get("contentType", "image/jpeg")  # Default if missing
 
-        ext = ""
-        if original_name and "." in original_name:
-            ext = original_name.split(".")[-1]
+        # Extract extension
+        if filename and "." in filename:
+            ext = filename.split(".")[-1]
+        else:
+            ext = "jpg"
 
-        key = f"cars/{uuid.uuid4()}" + (f".{ext}" if ext else "")
+        # Build the S3 key (path inside bucket)
+        key = f"cars/{uuid.uuid4()}.{ext}"
 
-        # Generate presigned PUT URL WITH Content-Type header
-        url = s3_client.generate_presigned_url(
-            ClientMethod="put_object",
+        # Generate presigned PUT URL (must sign with Content-Type)
+        upload_url = s3.generate_presigned_url(
+            "put_object",
             Params={
                 "Bucket": BUCKET,
                 "Key": key,
@@ -30,19 +34,24 @@ def lambda_handler(event, context):
             ExpiresIn=3600
         )
 
+        # Public object URL
         object_url = f"https://{BUCKET}.s3.amazonaws.com/{key}"
 
         return {
             "statusCode": 200,
-            "headers": {"Access-Control-Allow-Origin": "*"},
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Methods": "*"
+            },
             "body": json.dumps({
-                "uploadUrl": url,
+                "uploadUrl": upload_url,
                 "objectUrl": object_url
             })
         }
 
     except Exception as e:
-        print("Error:", str(e))
+        print("Error:", e)
         return {
             "statusCode": 500,
             "headers": {"Access-Control-Allow-Origin": "*"},
