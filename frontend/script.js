@@ -57,20 +57,29 @@ const deleteCar = (id) => request(`/cars/${id}`, { method: "DELETE" });
 
 const uploadImage = async (file) => {
   if (!file) return null;
+
   const filename = `${Date.now()}-${file.name}`;
-  // Ask backend for a presigned URL.
+
   const { uploadUrl, objectUrl } = await request("/cars/upload", {
     method: "POST",
-    body: JSON.stringify({ filename }),
+    body: JSON.stringify({
+      filename,
+      contentType: file.type,   // <-- IMPORTANT
+    }),
   });
-  // Upload directly to S3 using the provided URL.
+
   const uploadResponse = await fetch(uploadUrl, {
     method: "PUT",
+    headers: {
+      "Content-Type": file.type,    // <-- MUST MATCH LAMBDA
+    },
     body: file,
   });
+
   if (!uploadResponse.ok) {
     throw new Error("Image upload failed");
   }
+
   return objectUrl;
 };
 
@@ -415,5 +424,6 @@ document.addEventListener("DOMContentLoaded", () => {
     default:
       break;
   }
+
 });
 
