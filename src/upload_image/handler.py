@@ -17,7 +17,7 @@ def lambda_handler(event, context):
         if original_name and "." in original_name:
             ext = original_name.split(".")[-1]
 
-        key = f"cars/{str(uuid.uuid4())}" + (f".{ext}" if ext else "")
+        key = f"cars/{uuid.uuid4()}" + (f".{ext}" if ext else "")
 
         # Generate presigned PUT URL WITH Content-Type header
         url = s3_client.generate_presigned_url(
@@ -35,7 +35,10 @@ def lambda_handler(event, context):
         return {
             "statusCode": 200,
             "headers": {"Access-Control-Allow-Origin": "*"},
-            "body": json.dumps({"uploadUrl": url, "key": key, "objectUrl": object_url})
+            "body": json.dumps({
+                "uploadUrl": url,
+                "objectUrl": object_url
+            })
         }
 
     except Exception as e:
