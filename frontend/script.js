@@ -60,18 +60,20 @@ const uploadImage = async (file) => {
 
   const filename = `${Date.now()}-${file.name}`;
 
+  // Request a presigned URL
   const { uploadUrl, objectUrl } = await request("/cars/upload", {
     method: "POST",
     body: JSON.stringify({
       filename,
-      contentType: file.type,   // <-- IMPORTANT
+      contentType: file.type
     }),
   });
 
+  // Upload file directly to S3
   const uploadResponse = await fetch(uploadUrl, {
     method: "PUT",
     headers: {
-      "Content-Type": file.type,    // <-- MUST MATCH LAMBDA
+      "Content-Type": file.type
     },
     body: file,
   });
@@ -82,6 +84,7 @@ const uploadImage = async (file) => {
 
   return objectUrl;
 };
+
 
 // --- Formatting helpers ----------------------------------------------------
 const formatCurrency = (value) =>
