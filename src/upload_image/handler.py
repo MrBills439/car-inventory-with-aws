@@ -25,9 +25,10 @@ def lambda_handler(event, context):
 
         url = s3_client.generate_presigned_url(
             ClientMethod="put_object",
-            Params={"Bucket": BUCKET, "Key": key, "ACL": "public-read"},
+            Params={"Bucket": BUCKET, "Key": key},
             ExpiresIn=3600
-        )
+)
+
 
         object_url = f"https://{BUCKET}.s3.amazonaws.com/{key}"
 
