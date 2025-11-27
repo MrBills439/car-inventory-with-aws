@@ -1,4 +1,10 @@
-const API_BASE_URL = "https://your-api-id.execute-api.region.amazonaws.com/prod";
+const API_BASE_URL = "https://e0t7dcfjd8.execute-api.us-west-1.amazonaws.com";
+
+async function loadCars() {
+  const res = await fetch(`${API_BASE_URL}/cars`);
+  const cars = await res.json();
+  displayCars(cars);
+}
 
 const state = {
   cars: [],
