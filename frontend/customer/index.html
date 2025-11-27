@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Showroom — Discover Your Next Car</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">SHOW</span>
+        <h1>Roadline Motors</h1>
+      </div>
+      <nav>
+        <a href="#inventory">Browse</a>
+        <a href="#testDrive">Test Drive</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="cta" href="../index.html">Dealer Login</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Premium inventory, ready today</p>
+        <h2>Find the car that matches your life.</h2>
+        <p>
+          From executive sedans to weekend-ready SUVs, explore real-time availability powered
+          by our AWS fleet systems.
+        </p>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by brand, model, or keyword"
+          />
+          <button id="searchBtn">Search</button>
+        </div>
+        <small id="searchHint">Start typing to see live matches.</small>
+      </div>
+      <div class="hero-visual">
+        <img src="../assets/cars/hero.jpg" alt="Showroom highlight" />
+      </div>
+    </section>
+
+    <section class="filters card" id="filters">
+      <div>
+        <label for="brandFilter">Brand</label>
+        <select id="brandFilter">
+          <option value="all">Any brand</option>
+        </select>
+      </div>
+      <div>
+        <label for="priceFilter">Max price</label>
+        <select id="priceFilter">
+          <option value="all">No limit</option>
+          <option value="30000">$30k</option>
+          <option value="50000">$50k</option>
+          <option value="80000">$80k</option>
+          <option value="120000">$120k</option>
+        </select>
+      </div>
+      <div>
+        <label for="bodyFilter">Body style</label>
+        <select id="bodyFilter">
+          <option value="all">Any style</option>
+          <option value="sedan">Sedan</option>
+          <option value="suv">SUV</option>
+          <option value="coupe">Coupe</option>
+          <option value="truck">Truck</option>
+          <option value="convertible">Convertible</option>
+        </select>
+      </div>
+      <button id="clearFilters" class="ghost">Clear filters</button>
+    </section>
+
+    <main id="inventory" class="inventory card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Available now</p>
+          <h3>Showroom inventory</h3>
+        </div>
+        <span id="resultCount">0 vehicles</span>
+      </div>
+      <div id="inventoryGrid" class="inventory-grid" aria-live="polite"></div>
+      <p id="noResults" class="empty-state hidden">
+        No vehicles match your search right now. Adjust filters or check back soon!
+      </p>
+    </main>
+
+    <section id="testDrive" class="card booking">
+      <div>
+        <p class="eyebrow">Book a visit</p>
+        <h3>Schedule a personalized test drive</h3>
+        <p>
+          Tell us the model you love and we’ll arrange a dedicated specialist, prep the car,
+          and confirm your preferred time.
+        </p>
+      </div>
+      <form id="testDriveForm">
+        <label>
+          Your name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Phone or email
+          <input type="text" name="contact" required />
+        </label>
+        <label>
+          Desired car
+          <input type="text" name="car" placeholder="e.g. 2023 Lexus RX F-Sport" required />
+        </label>
+        <label>
+          Preferred date
+          <input type="date" name="date" required />
+        </label>
+        <label class="full">
+          Notes
+          <textarea name="notes" rows="3" placeholder="Any specific requests?"></textarea>
+        </label>
+        <button type="submit">Request drive</button>
+      </form>
+    </section>
+
+    <section id="contact" class="card contact">
+      <div>
+        <p class="eyebrow">Stay in touch</p>
+        <h3>Talk with our concierge team</h3>
+        <p>
+          Have questions about financing, trade-ins, or bespoke orders? Drop us a line—we respond
+          within one business day.
+        </p>
+        <ul>
+          <li>📍 1188 Performance Ave, Atlanta GA</li>
+          <li>📞 (404) 555-0191</li>
+          <li>✉️ concierge@roadlinecars.com</li>
+        </ul>
+      </div>
+      <form id="contactForm">
+        <label>
+          Full name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label class="full">
+          Message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit">Send message</button>
+      </form>
+    </section>
+
+    <footer>
+      <small>© <span id="copyrightYear"></span> Roadline Motors. All rights reserved.</small>
+    </footer>
+
+    <div id="toastContainer" class="toast-container"></div>
+    <script src="script.js" defer></script>
+  </body>
+</html>
+
